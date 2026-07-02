@@ -8,6 +8,7 @@ A simple, fast, and reliable Command-Line Interface (CLI) tool built with .NET 9
 * **Sync by Exact Time:** Shifts all subtitle timings by matching the first subtitle's start time to a specific target time (Format: `HH:mm:ss,fff`).
 * **Sync by Seconds:** Easily advance or delay subtitle timings using seconds (supports decimal values).
 * **High Precision:** Maintains millisecond accuracy using C#'s standard `TimeSpan` calculations.
+* **Targeted Sync:** Fix desynced subtitles from a specific point forward without affecting the earlier perfectly-timed lines using an index target.
 
 ##  Prerequisites
 * [.NET 9.0 SDK](https://dotnet.microsoft.com/) (Required if you want to run via `dotnet run` or build the project from source).
@@ -17,7 +18,7 @@ You can run the program directly from the source code or build it into a standal
 
 **Build as a Single Executable (Windows x64):**
 ```bash
-dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
+dotnet publish -c Release
 ```
 
 The compiled resync.exe file will be generated in the bin/Release/net9.0/win-x64/publish/ folder and can be executed on any Windows machine without requiring the .NET SDK.
@@ -61,4 +62,10 @@ Use this parameter if the subtitles appear slightly too early or too late throug
 If you know exactly when the first dialog should appear in the video (e.g., at `00:01:15,500`), the program will automatically calculate the offset and adjust the rest of the file accordingly.
 ```bash
 resync -in "input.srt" -out "output.srt" -s "00:01:15,500"
+```
+
+**4. Targeted Sync from Specific Index (`--edit-index` & `--new-time` )**
+If the subtitles are fine initially but go out of sync halfway through (e.g., starting at subtitle index 45). This adjusts index 45 and all subsequent subtitles.
+```bash
+resync -i "input.srt" -o "output.srt" -e 45 -n "00:25:30,150"
 ```
