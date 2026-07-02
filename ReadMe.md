@@ -26,16 +26,16 @@ The compiled resync.exe file will be generated in the bin/Release/net9.0/win-x64
 ## Usage
 Run the program via your terminal or Command Prompt.
 
-Run the program via your terminal or Command Prompt.
-
 ### Available Parameters
 
 | Command | Alias | Description | Required |
 | :--- | :--- | :--- | :---: |
-| `--input` | `-in` | The original `.srt` file path to process. | ✅ Yes |
-| `--output` | `-out` | The destination path to save the output `.srt` file. | ✅ Yes |
+| `--input` | `-i` | The original `.srt` file path to process. | ✅ Yes |
+| `--output` | `-o` | The destination path to save the output `.srt` file. | ✅ Yes |
 | `--start` | `-s` | Adjusts the start time of the first subtitle (Example: `00:00:25,644`). | ❌ No |
-| `--seconds` | `-sec` | Shifts subtitle timing by a specific amount of seconds. | ❌ No |
+| `--seconds` | `-t` | Shifts subtitle timing by a specific amount of seconds. | ❌ No |
+| `--edit-index` | `-e` | Target index to start shifting the timing. | ❌ No |
+| `--new-time` | `-n` | New start time for the targeted index (Requires `--edit-index`). | ❌ No |
 
 ---
 
