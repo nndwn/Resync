@@ -11,6 +11,8 @@
     <DebugSymbols>false</DebugSymbols>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.2.1</Version>
+    <Description>A CLI tool to resync and re-index SRT subtitles.</Description>
   </PropertyGroup>
 
   <ItemGroup>
