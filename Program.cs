@@ -1,4 +1,4 @@
-﻿using System.CommandLine;
+using System.CommandLine;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using FFMpegCore;
@@ -8,6 +8,7 @@ namespace Resync;
  class Program
  {
 
+     private const string PathModel = "models/silero_vad.onnx";
     private static int Main(string[] args)
     {
         var inputOption = new Option<FileInfo>("--input", "-i")
@@ -67,7 +68,7 @@ namespace Resync;
                 var isFFmpegReady = EnsureFFmpeg();
                 if (!isFFmpegReady) return;
        
-                AudioTranscription.ExtractAndProcessAudioSafely(inputFile.FullName);
+                AudioTranscription.ExtractAndProcessAudioSafely(inputFile.FullName, PathModel).GetAwaiter().GetResult();
             }
             else
             {
